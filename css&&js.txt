@@ -1,0 +1,782 @@
+/***********************************************标记找input******************************************************/
+ var wbsidforcheck = "<s:property value='wbsid'/>";
+	 var idtg = $("form input[tg='idtg']");
+	 var idstr = "";
+	 $.each(idtg,function(idx,obj){
+		 if($(obj).val()!=""&&$(obj).val()!=null){}
+			idstr += $(obj).val() + ",";
+	 	}
+	 });
+/**********************************************超出范围样式******************************************************/
+<span title='江苏' style="cursor:hand;display:block; width:180px;overflow:hidden; white-space:nowrap;text-overflow:ellipsis;">
+<nobr>江苏</nobr>
+</span>
+
+if(!confirm("确定删除?")){return;}
+
+
+/*****************************************checkbox全选**********************************************/
+function chooseAllId(chkAll) {   
+	$("#listtab input:checkbox").each(function(idx, chkObject) {
+		chkObject.checked = chkAll.checked;
+		});
+}
+
+/*****************************************弹出页面**********************************************/
+function setUserOrStoresId(targetId){
+	var url ="../member/setUserOrStoresId.aspx";
+	var tempValue = window.showModalDialog(url,"","dialogWidth:600px;dialogHeight:500px;status:no;help:no;resizable:yes;scroll:no; ");
+	//modalValues=retValue;
+	//设置目标控件赋值
+	if(tempValue!=null){
+	    document.getElementById("'"+targetId+"'").value = tempValue;
+	}
+}
+页面上<base target="_self"/>
+页面关闭及返回值window.returnValue= uid;window.close();
+
+/*****************************************input正整数,小数**********************************************/
+onkeyup="javascript: var myreg=/^[+]?(([0-9]\d*[.]?)|(0.))(\d{0,2})?$/;if(!myreg.test(this.value)){this.value=''; }; "
+
+/*****************************************jquery--Ajax**********************************************/
+var myurl = "info.aspx";
+		$.ajax({
+			url:myurl,
+			type:"get",
+			contentType:"application/x-www-form-urlencoded; charset=utf-8", 
+			data:{userId:uid,userType:utype},
+			cache:false,
+			error:function(){
+				alert("出错");
+			},
+			success:function(data){
+				alert(data);
+			}
+		});
+		
+ /*****************************************jquery--Ajax返回json**********************************************/
+$.ajax({                
+		         //要用post方式                  
+		         type: "Post",                 
+		         //方法所在页面和方法名                  
+		         url: "backOrgAjax.aspx/getOrgList",                      
+		         contentType: "application/json; charset=utf-8",                 
+		         dataType: "json", 
+		         //complete :function(){$("#waiting").hide();},//AJAX请求完成时隐藏loading提示                  
+		         success: function(data) {                     
+		            //返回的数据用data.d获取内容                      
+		            alert(data.d);                 
+		         },                 
+		         error: function(err) {                     
+		            alert(err);                 
+		         }             
+		    }); 	
+方法 必须是
+using System.Web.Script.Services;
+[WebMethod]     
+public static string getOrgList()			
+
+/*****************************************js分辨率**********************************************/
+<script type="text/javascript">function getInfo(){ 
+     var s = "";   
+      s += " 网页可见区域宽："+ document.body.clientWidth+"\n";    
+      s += " 网页可见区域高："+ document.body.clientHeight+"\n";    
+      s += " 网页可见区域宽："+ document.body.offsetWidth + " (包括边线和滚动条的宽)"+"\n";    
+      s += " 网页可见区域高："+ document.body.offsetHeight + " (包括边线的宽)"+"\n";    
+      s += " 网页正文全文宽："+ document.body.scrollWidth+"\n";    
+      s += " 网页正文全文高："+ document.body.scrollHeight+"\n";    
+      s += " 网页被卷去的高(ff)："+ document.body.scrollTop+"\n";    
+      s += " 网页被卷去的高(ie)："+ document.documentElement.scrollTop+"\n";    
+      s += " 网页被卷去的左："+ document.body.scrollLeft+"\n";    
+      s += " 网页正文部分上："+ window.screenTop+"\n";    
+      s += " 网页正文部分左："+ window.screenLeft+"\n";    
+      s += " 屏幕分辨率的高："+ window.screen.height+"\n";    
+      s += " 屏幕分辨率的宽："+ window.screen.width+"\n";    
+      s += " 屏幕可用工作区高度："+ window.screen.availHeight+"\n";    
+      s += " 屏幕可用工作区宽度："+ window.screen.availWidth+"\n";    
+      s += " 你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色"+"\n";    
+      s += " 你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸"+"\n";    
+      alert (s);
+    }
+    getInfo();
+  </script>
+  
+ /*****************************************js分辨率**********************************************/
+js保留两位小数：$("#totalMoney").val(Number(gTmoney).toFixed(2));
+
+/********************************************端口占用*************************************************/
+开始--运行--cmd 进入命令提示符 输入netstat -ano 即可看到所有连接的PID 之后在任务管理器中找到这个PID所对应的程序如果任务管理器中没有PID这一项,可以在任务管理器中选"查看"-"选择列"
+
+经常，我们在启动应用的时候发现系统需要的端口被别的程序占用，如何知道谁占有了我们需要的端口，很多人都比较头疼，下面就介绍一种非常简单的方法，希望对大家有用
+
+假如我们需要确定谁占用了我们的9050端口
+
+1、Windows平台
+在windows命令行窗口下执行：
+
+C:\>netstat -aon|findstr "9050"TCP    127.0.0.1:9050         0.0.0.0:0              LISTENING       2016
+
+看到了吗，端口被进程号为2016的进程占用，继续执行下面命令：
+
+C:\>tasklist|findstr "2016"tor.exe                     2016 Console                 0     16,064 K
+很清楚吧，tor占用了你的端口。
+
+
+命令格式：Netstat -a -e -n -o -s－an
+
+-a 表示显示所有活动的TCP连接以及计算机监听的TCP和UDP端口。
+
+-e 表示显示以太网发送和接收的字节数、数据包数等。
+
+-n 表示只以数字形式显示所有活动的TCP连接的地址和端口号。
+
+-o 表示显示活动的TCP连接并包括每个连接的进程ID（PID）。
+
+-s 表示按协议显示各种连接的统计信息，包括端口号。
+
+-an 查看所有开放的端口
+/*************************************css,display和visibility**********************************/
+visibility="visible|hidden"来表示，
+visible表示显示，hidden表示隐藏。
+当visibility被设置为"hidden"的时候，元素虽然被隐藏了，但它仍然占据它原来所在的位置。
+当display被设置为block(块)时，容器中所有的元素将会被当作一个单独的块，就像<div>元素一样，它会在那个点被放入到页面中。
+(实际上你可以设置<span>的display:block，使其可以像<div>一样工作。
+将display设置为inline，将使其行为和元素inline一样---即使它是普通的块元素如<div>，它也将会被组合成像<span>那样的输出流。
+最后是display被设置：none,这时元素实际上就从页面中被移走，它下面所在的元素就会被自动跟上填充。
+/*******************************************js去空格*********************************************/
+//去左空格;
+function ltrim(s){
+return s.replace( /^\s*/, "");
+}
+
+//去右空格;
+function rtrim(s){
+return s.replace( /\s*$/, "");
+}
+//调用方法
+
+function Button2_onclick() {
+    var s = document.getElementById("TextBox1")
+   s.value= rtrim(ltrim(s.value))
+}
+
+
+/*******************************************javascript脚本收藏--屏蔽类,方便以后查找*********************************************/
+一、屏蔽键盘所有键 
+
+<script language="javascript">
+<!--
+function document.onkeydown()...{
+event.keyCode = 0;
+event.returnvalue = false;
+}
+-->
+</script>
+ 
+
+二、屏蔽鼠标右键
+
+在body标签里加上oncontextmenu="return  false"　或者: 
+
+ 
+
+<script language="javascript">
+<!--
+function document.oncontextmenu() 
+...{ 
+return false; 
+} 
+-->
+</script>
+
+function nocontextmenu()
+...{ 
+if(document.all) ...{
+event.cancelBubble=true;
+event.returnvalue=false; 
+return false; 
+}
+}或者:
+<body onmousedown="rclick()" oncontextmenu= "nocontextmenu()">
+
+<script language="javascript">
+<!--
+function rclick()
+{
+	if(document.all) {if (event.button == 2){event.returnvalue=false;}}
+}
+-->
+</script>
+三、屏蔽 Ctrl+N、Shift+F10、F5刷新、退格键
+<script language="javascript">
+<!--
+//屏蔽鼠标右键、Ctrl+N、Shift+F10、F5刷新、退格键
+function window.onhelp()...{return false} //屏蔽F1帮助
+function KeyDown()...{
+if ((window.event.altKey)&&
+((window.event.keyCode==37)|| //屏蔽 Alt+ 方向键 ←
+(window.event.keyCode==39)))...{ //屏蔽 Alt+ 方向键 →
+alert("不准你使用ALT+方向键前进或后退网页！");
+event.returnvalue=false;
+}注：这还不是真正地屏蔽 Alt+ 方向键，因为 Alt+ 方向键弹出警告框时，按住 Alt 键不放，用鼠标点掉警告框，这种屏蔽方法就失效了。
+ 
+
+ 
+
+if ((event.keyCode == 8) && 
+(event.srcElement.type != "text" && 
+event.srcElement.type != "textarea" && 
+event.srcElement.type != "password") || //屏蔽退格删除键 
+(event.keyCode==116)|| //屏蔽 F5 刷新键
+(event.ctrlKey && event.keyCode==82))...{ //Ctrl + R
+event.keyCode=0;
+event.returnvalue=false;
+}
+if ((event.ctrlKey)&&(event.keyCode==78)) //屏蔽 Ctrl+n
+event.returnvalue=false;
+if ((event.shiftKey)&&(event.keyCode==121)) //屏蔽 shift+F10
+event.returnvalue=false;
+if (window.event.srcElement.tagName == "A" && window.event.shiftKey) 
+
+window.event.returnvalue = false; //屏蔽 shift 加鼠标左键新开一网页
+if ((window.event.altKey)&&(window.event.keyCode==115))...{ //屏蔽Alt+F4
+window.showModelessDialog("about:blank","","dialogWidth:1px;dialogheight:1px");
+return false;}
+}另外可以用 window.open 的方法屏蔽 IE 的所有菜单
+　　第一种方法：
+
+ 
+
+window.open("你的.htm", "","toolbar=no,location=no,directories=no,menubar=no,scrollbars=no,resizable=yes,status=no,top=0,left=0")
+　　第二种方法是打开一个全屏的页面：
+
+window.open("你的.asp", "", "fullscreen=yes")
+
+四、屏蔽浏览器右上角“最小化”“最大化”“关闭”键
+
+ 
+
+<script language=javascript>
+function window.onbeforeunload()
+...{
+if(event.clientX>document.body.clientWidth&&event.clientY<0||event.altKey)
+...{
+window.event.returnvalue = "";
+}
+}
+</script>
+　或者使用全屏打开页面
+<script language="javascript">
+<!--
+window.open(www.32pic.com,"32pic","fullscreen=3,height=100, width=400, 
+top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, 
+status=no");
+-->
+</script>
+
+　　注：在body标签里加上
+onbeforeunload="javascript:return false"//使不能关闭窗口
+
+五、屏蔽F5键
+
+
+<script language="javascript">
+<!--
+function document.onkeydown() 
+...{ 
+if ( event.keyCode==116) 
+...{ 
+event.keyCode = 0; 
+event.cancelBubble = true; 
+return false; 
+}
+}
+-->
+</script>
+六、屏蔽IE后退按钮
+　　在你链接的时候用
+
+<a href="javascript:location.replace(url)">
+
+
+七、屏蔽主窗口滚动条
+　　在body标签里加上style="overflow-y:hidden"
+
+八、屏蔽拷屏,不断地清空剪贴板
+　　在body标签里加上
+	onload="setInterval('clipboardData.setData(\'Text\',\'\')',100)"
+九、屏蔽IE6.0 图片上自动出现的保存图标
+方法一：
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+方法二：
+<img galleryimg="no">
+@@ 
+
+
+
+/**********************************************js日期相关*****************************************************、
+Js获取当前日期时间及其它操作
+
+
+var myDate = new Date();
+myDate.getYear();        //获取当前年份(2位)
+myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+myDate.getMonth();       //获取当前月份(0-11,0代表1月)
+myDate.getDate();        //获取当前日(1-31)
+myDate.getDay();         //获取当前星期X(0-6,0代表星期天)
+myDate.getTime();        //获取当前时间(从1970.1.1开始的毫秒数)
+myDate.getHours();       //获取当前小时数(0-23)
+myDate.getMinutes();     //获取当前分钟数(0-59)
+myDate.getSeconds();     //获取当前秒数(0-59)
+myDate.getMilliseconds();    //获取当前毫秒数(0-999)
+myDate.toLocaleDateString();     //获取当前日期
+var mytime=myDate.toLocaleTimeString();     //获取当前时间
+myDate.toLocaleString( );        //获取日期与时间
+ 
+ 
+ 
+日期时间脚本库方法列表
+ 
+Date.prototype.isLeapYear 判断闰年
+Date.prototype.Format 日期格式化
+Date.prototype.DateAdd 日期计算
+Date.prototype.DateDiff 比较日期差
+Date.prototype.toString 日期转字符串
+Date.prototype.toArray 日期分割为数组
+Date.prototype.DatePart 取日期的部分信息
+Date.prototype.MaxDayOfDate 取日期所在月的最大天数
+Date.prototype.WeekNumOfYear 判断日期所在年的第几周
+StringToDate 字符串转日期型
+IsValidDate 验证日期有效性
+CheckDateTime 完整日期时间检查
+daysBetween 日期天数差
+ 
+js代码：
+ 
+//---------------------------------------------------  
+// 判断闰年  
+//---------------------------------------------------  
+Date.prototype.isLeapYear = function()   
+{   
+    return (0==this.getYear()%4&&((this.getYear()%100!=0)||(this.getYear()%400==0)));   
+}   
+  
+//---------------------------------------------------  
+// 日期格式化  
+// 格式 YYYY/yyyy/YY/yy 表示年份  
+// MM/M 月份  
+// W/w 星期  
+// dd/DD/d/D 日期  
+// hh/HH/h/H 时间  
+// mm/m 分钟  
+// ss/SS/s/S 秒  
+//---------------------------------------------------  
+Date.prototype.Format = function(formatStr)   
+{   
+    var str = formatStr;   
+    var Week = ['日','一','二','三','四','五','六'];  
+  
+    str=str.replace(/yyyy|YYYY/,this.getFullYear());   
+    str=str.replace(/yy|YY/,(this.getYear() % 100)>9?(this.getYear() % 100).toString():'0' + (this.getYear() % 100));   
+  
+    str=str.replace(/MM/,this.getMonth()>9?this.getMonth().toString():'0' + this.getMonth());   
+    str=str.replace(/M/g,this.getMonth());   
+  
+    str=str.replace(/w|W/g,Week[this.getDay()]);   
+  
+    str=str.replace(/dd|DD/,this.getDate()>9?this.getDate().toString():'0' + this.getDate());   
+    str=str.replace(/d|D/g,this.getDate());   
+  
+    str=str.replace(/hh|HH/,this.getHours()>9?this.getHours().toString():'0' + this.getHours());   
+    str=str.replace(/h|H/g,this.getHours());   
+    str=str.replace(/mm/,this.getMinutes()>9?this.getMinutes().toString():'0' + this.getMinutes());   
+    str=str.replace(/m/g,this.getMinutes());   
+  
+    str=str.replace(/ss|SS/,this.getSeconds()>9?this.getSeconds().toString():'0' + this.getSeconds());   
+    str=str.replace(/s|S/g,this.getSeconds());   
+  
+    return str;   
+}   
+  
+//+---------------------------------------------------  
+//| 求两个时间的天数差 日期格式为 YYYY-MM-dd   
+//+---------------------------------------------------  
+function daysBetween(DateOne,DateTwo)  
+{   
+    var OneMonth = DateOne.substring(5,DateOne.lastIndexOf ('-'));  
+    var OneDay = DateOne.substring(DateOne.length,DateOne.lastIndexOf ('-')+1);  
+    var OneYear = DateOne.substring(0,DateOne.indexOf ('-'));  
+  
+    var TwoMonth = DateTwo.substring(5,DateTwo.lastIndexOf ('-'));  
+    var TwoDay = DateTwo.substring(DateTwo.length,DateTwo.lastIndexOf ('-')+1);  
+    var TwoYear = DateTwo.substring(0,DateTwo.indexOf ('-'));  
+  
+    var cha=((Date.parse(OneMonth+'/'+OneDay+'/'+OneYear)- Date.parse(TwoMonth+'/'+TwoDay+'/'+TwoYear))/86400000);   
+    return Math.abs(cha);  
+}  
+  
+  
+//+---------------------------------------------------  
+//| 日期计算  
+//+---------------------------------------------------  
+Date.prototype.DateAdd = function(strInterval, Number) {   
+    var dtTmp = this;  
+    switch (strInterval) {   
+        case 's' :return new Date(Date.parse(dtTmp) + (1000 * Number));  
+        case 'n' :return new Date(Date.parse(dtTmp) + (60000 * Number));  
+        case 'h' :return new Date(Date.parse(dtTmp) + (3600000 * Number));  
+        case 'd' :return new Date(Date.parse(dtTmp) + (86400000 * Number));  
+        case 'w' :return new Date(Date.parse(dtTmp) + ((86400000 * 7) * Number));  
+        case 'q' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number*3, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+        case 'm' :return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+        case 'y' :return new Date((dtTmp.getFullYear() + Number), dtTmp.getMonth(), dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());  
+    }  
+}  
+  
+//+---------------------------------------------------  
+//| 比较日期差 dtEnd 格式为日期型或者有效日期格式字符串  
+//+---------------------------------------------------  
+Date.prototype.DateDiff = function(strInterval, dtEnd) {   
+    var dtStart = this;  
+    if (typeof dtEnd == 'string' )//如果是字符串转换为日期型  
+    {   
+        dtEnd = StringToDate(dtEnd);  
+    }  
+    switch (strInterval) {   
+        case 's' :return parseInt((dtEnd - dtStart) / 1000);  
+        case 'n' :return parseInt((dtEnd - dtStart) / 60000);  
+        case 'h' :return parseInt((dtEnd - dtStart) / 3600000);  
+        case 'd' :return parseInt((dtEnd - dtStart) / 86400000);  
+        case 'w' :return parseInt((dtEnd - dtStart) / (86400000 * 7));  
+        case 'm' :return (dtEnd.getMonth()+1)+((dtEnd.getFullYear()-dtStart.getFullYear())*12) - (dtStart.getMonth()+1);  
+        case 'y' :return dtEnd.getFullYear() - dtStart.getFullYear();  
+    }  
+}  
+  
+//+---------------------------------------------------  
+//| 日期输出字符串，重载了系统的toString方法  
+//+---------------------------------------------------  
+Date.prototype.toString = function(showWeek)  
+{   
+    var myDate= this;  
+    var str = myDate.toLocaleDateString();  
+    if (showWeek)  
+    {   
+        var Week = ['日','一','二','三','四','五','六'];  
+        str += ' 星期' + Week[myDate.getDay()];  
+    }  
+    return str;  
+}  
+  
+//+---------------------------------------------------  
+//| 日期合法性验证  
+//| 格式为：YYYY-MM-DD或YYYY/MM/DD  
+//+---------------------------------------------------  
+function IsValidDate(DateStr)   
+{   
+    var sDate=DateStr.replace(/(^\s+|\s+$)/g,''); //去两边空格;   
+    if(sDate=='') return true;   
+    //如果格式满足YYYY-(/)MM-(/)DD或YYYY-(/)M-(/)DD或YYYY-(/)M-(/)D或YYYY-(/)MM-(/)D就替换为''   
+    //数据库中，合法日期可以是:YYYY-MM/DD(2003-3/21),数据库会自动转换为YYYY-MM-DD格式   
+    var s = sDate.replace(/[\d]{ 4,4 }[\-/]{ 1 }[\d]{ 1,2 }[\-/]{ 1 }[\d]{ 1,2 }/g,'');   
+    if (s=='') //说明格式满足YYYY-MM-DD或YYYY-M-DD或YYYY-M-D或YYYY-MM-D   
+    {   
+        var t=new Date(sDate.replace(/\-/g,'/'));   
+        var ar = sDate.split(/[-/:]/);   
+        if(ar[0] != t.getYear() || ar[1] != t.getMonth()+1 || ar[2] != t.getDate())   
+        {   
+            //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。');   
+            return false;   
+        }   
+    }   
+    else   
+    {   
+        //alert('错误的日期格式！格式为：YYYY-MM-DD或YYYY/MM/DD。注意闰年。');   
+        return false;   
+    }   
+    return true;   
+}   
+  
+//+---------------------------------------------------  
+//| 日期时间检查  
+//| 格式为：YYYY-MM-DD HH:MM:SS  
+//+---------------------------------------------------  
+function CheckDateTime(str)  
+{   
+    var reg = /^(\d+)-(\d{ 1,2 })-(\d{ 1,2 }) (\d{ 1,2 }):(\d{ 1,2 }):(\d{ 1,2 })$/;   
+    var r = str.match(reg);   
+    if(r==null)return false;   
+    r[2]=r[2]-1;   
+    var d= new Date(r[1],r[2],r[3],r[4],r[5],r[6]);   
+    if(d.getFullYear()!=r[1])return false;   
+    if(d.getMonth()!=r[2])return false;   
+    if(d.getDate()!=r[3])return false;   
+    if(d.getHours()!=r[4])return false;   
+    if(d.getMinutes()!=r[5])return false;   
+    if(d.getSeconds()!=r[6])return false;   
+    return true;   
+}   
+  
+//+---------------------------------------------------  
+//| 把日期分割成数组  
+//+---------------------------------------------------  
+Date.prototype.toArray = function()  
+{   
+    var myDate = this;  
+    var myArray = Array();  
+    myArray[0] = myDate.getFullYear();  
+    myArray[1] = myDate.getMonth();  
+    myArray[2] = myDate.getDate();  
+    myArray[3] = myDate.getHours();  
+    myArray[4] = myDate.getMinutes();  
+    myArray[5] = myDate.getSeconds();  
+    return myArray;  
+}  
+  
+//+---------------------------------------------------  
+//| 取得日期数据信息  
+//| 参数 interval 表示数据类型  
+//| y 年 m月 d日 w星期 ww周 h时 n分 s秒  
+//+---------------------------------------------------  
+Date.prototype.DatePart = function(interval)  
+{   
+    var myDate = this;  
+    var partStr='';  
+    var Week = ['日','一','二','三','四','五','六'];  
+    switch (interval)  
+    {   
+        case 'y' :partStr = myDate.getFullYear();break;  
+        case 'm' :partStr = myDate.getMonth()+1;break;  
+        case 'd' :partStr = myDate.getDate();break;  
+        case 'w' :partStr = Week[myDate.getDay()];break;  
+        case 'ww' :partStr = myDate.WeekNumOfYear();break;  
+        case 'h' :partStr = myDate.getHours();break;  
+        case 'n' :partStr = myDate.getMinutes();break;  
+        case 's' :partStr = myDate.getSeconds();break;  
+    }  
+    return partStr;  
+}  
+  
+//+---------------------------------------------------  
+//| 取得当前日期所在月的最大天数  
+//+---------------------------------------------------  
+Date.prototype.MaxDayOfDate = function()  
+{   
+    var myDate = this;  
+    var ary = myDate.toArray();  
+    var date1 = (new Date(ary[0],ary[1]+1,1));  
+    var date2 = date1.dateAdd(1,'m',1);  
+    var result = dateDiff(date1.Format('yyyy-MM-dd'),date2.Format('yyyy-MM-dd'));  
+    return result;  
+}  
+  
+//+---------------------------------------------------  
+//| 取得当前日期所在周是一年中的第几周  
+//+---------------------------------------------------  
+Date.prototype.WeekNumOfYear = function()  
+{   
+    var myDate = this;  
+    var ary = myDate.toArray();  
+    var year = ary[0];  
+    var month = ary[1]+1;  
+    var day = ary[2];  
+    document.write('< script language=VBScript\> \n');  
+    document.write('myDate = Datue(''+month+'-'+day+'-'+year+'') \n');  
+    document.write('result = DatePart('ww', myDate) \n');  
+    document.write(' \n');  
+    return result;  
+}  
+  
+//+---------------------------------------------------  
+//| 字符串转成日期类型   
+//| 格式 MM/dd/YYYY MM-dd-YYYY YYYY/MM/dd YYYY-MM-dd  
+//+---------------------------------------------------  
+function StringToDate(DateStr)  
+{   
+  
+    var converted = Date.parse(DateStr);  
+    var myDate = new Date(converted);  
+    if (isNaN(myDate))  
+    {   
+        //var delimCahar = DateStr.indexOf('/')!=-1?'/':'-';  
+        var arys= DateStr.split('-');  
+        myDate = new Date(arys[0],--arys[1],arys[2]);  
+    }  
+    return myDate;  
+}  
+ 
+ 
+ 
+若要显示:当前日期加时间(如:2009-06-12 12:00)
+ 
+function CurentTime()
+    { 
+        var now = new Date();
+       
+        var year = now.getFullYear();       //年
+        var month = now.getMonth() + 1;     //月
+        var day = now.getDate();            //日
+       
+        var hh = now.getHours();            //时
+        var mm = now.getMinutes();          //分
+       
+        var clock = year + "-";
+       
+        if(month < 10)
+            clock += "0";
+       
+        clock += month + "-";
+       
+        if(day < 10)
+            clock += "0";
+           
+        clock += day + " ";
+       
+        if(hh < 10)
+            clock += "0";
+           
+        clock += hh + ":";
+        if (mm < 10) clock += '0'; 
+        clock += mm; 
+        return(clock); 
+    } 
+/****************************************js判断ie版本********************************************/
+	有一种代码：
+
+<script type="text/javascript"> 
+var browser=navigator.appName 
+var b_version=navigator.appVersion 
+var version=b_version.split(";"); 
+var trim_Version=version[1].replace(/[ ]/g,""); 
+if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0") 
+{ 
+alert("IE 6.0"); 
+} 
+else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0") 
+{ 
+alert("IE 7.0"); 
+} 
+else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0") 
+{ 
+alert("IE 8.0"); 
+} 
+else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE9.0") 
+{ 
+alert("IE 9.0"); 
+} 
+</script>
+
+第二种：
+
+<script type="text/javascript"> 
+if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE6.0") 
+{ 
+alert("IE 6.0"); 
+} 
+else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE7.0") 
+{ 
+alert("IE 7.0"); 
+} 
+else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0") 
+{ 
+alert("IE 8.0"); 
+} 
+else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE9.0") 
+{ 
+alert("IE 9.0"); 
+} 
+</script>
+
+第三种：
+
+<script type="text/javascript"> 
+if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/7./i)=="7.") 
+{ 
+alert("IE 7.0"); 
+} 
+else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/8./i)=="8.") 
+{ 
+alert("IE 8.0"); 
+} 
+else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/9./i)=="9.") 
+{ 
+alert("IE 9.0"); 
+} 
+else if(navigator.appName == "Microsoft Internet Explorer") 
+{ 
+alert("IE 6.0"); 
+} 
+</script>
+/****************************************js判断文件后缀名********************************************/
+
+var fj=document.all("fjfile").value;
+var pos = fj.lastIndexOf('.');
+	var extension = obj.value.substring(pos).toLowerCase();
+	if(!((extension == '.xls')||(extension == '.xlsx'))){
+		alert("请选择Excel文件！");
+		return false ;
+	}
+/******************************************日期相减*************************************************/	
+function carculateMonth(){
+	var startdate = $("#processallplandetailstartdate").val();
+	var enddate = $("#processallplandetailfinishdate").val();
+	
+	if(startdate !="" && enddate != ""){
+		var sdarr = startdate.split("-");
+		var edarr = enddate.split("-");
+		
+		var sd = new Date(parseInt(sdarr[0]),parseInt(sdarr[1])-1,parseInt(sdarr[2]));
+		var ed = new Date(parseInt(edarr[0]),parseInt(edarr[1])-1,parseInt(edarr[2]));
+		var periodrate = (ed - sd)/3600000/24/30
+		
+		$("#processallplandetaillimit").val(Math.round(periodrate));
+	}else{
+		$("#processallplandetaillimit").val("");
+	}
+	
+}
+/****************************************jquery滑动***********************************************/
+
+$(document).ready(function(){
+    $("#listtab tr:odd").addClass("haveColor");
+	//$("#mBox2").hide();
+	$('.infoBoxTit a').click( 
+		function() { 
+			var currentTab = $(this).attr('href');
+			$(currentTab).slideToggle();
+			$(this).blur();
+			return false; 
+	});
+});
+function getContent(myUrl,contentTag){
+		 
+			//加载url的页面
+			$.ajax({
+				cache:false,
+				url:myUrl,
+				error:function(msg){
+					alert("加载"+myurl+"页面出错");
+				},
+				success:function(data){
+					$("#"+contentTag).html(data);
+					//判断是否div是否隐藏着
+	    	if($('#boxx1').is(":hidden")){
+		    	$('#boxx1').slideToggle();
+			    $('#a1').blur();
+			   
+			}
+					$("#mBox2").show();
+					
+				}
+			});
+		}
+触发事件  onClick='getContent("getHoistListDetail.action?xmId=${pl.xmId}&&dzpgDate=${pl.dzDate}","detailbox");'
+
+<div id="mBox2" class="infoBox" style="margin-top:6px;">
+        	<div class="infoBoxTit">
+            	<a id="a1" href="#boxx1">构件</a>单击蓝字标题显示/隐藏
+            </div>
+            <div id="boxx1" class="">
+            	<div id="detailbox" class="infoBoxCenT">222222</div>
+            </div>
+        </div>

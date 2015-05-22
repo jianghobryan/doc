@@ -1,0 +1,34 @@
+  
+    <sql id="getMaterialturninstoreList">
+  	select * from (
+	select o.*,m.code as checkName,e1.name as statuserName,e2.name as financuserName, 
+	e3.name as instoreuserName,e4.name as materialleaderName , mrc.state as checkstate,
+	mrc.id as recheckid  from T_PM_MaterialTurnInStore o 
+        		left join (
+        		select c.id,c.code from T_PM_MaterialContract c 
+        		 union all 
+        		select c.id,c.code from T_PM_UniteStockContract c 
+        		) m on m.id=o.checkid 
+        		left join t_hr_employee e1 on e1.id=o.statuser 
+        		left join t_hr_employee e2 on e2.id =o.financuser 
+        		left join t_hr_employee e3 on e3.id=o.instoreuser 
+        		left join t_hr_employee e4 on e4.id=o.materialleader  
+        		left join t_pm_materialinoutrecheck mrc on mrc.inoutheaderid=o.id 
+        		) o where 1=1
+        		<dynamic>
+				  	<isNotEmpty property="where">
+				  			$where$
+				  	</isNotEmpty>
+			  	</dynamic>
+  </sql>
+  
+  <select id="countFindMaterialturninstoreList" resultClass="java.lang.Integer">
+	  	SELECT count(*) PG_TOTALCOUNT FROM (
+		 	<include refid="getMaterialturninstoreList" />
+		) d
+  </select>
+  
+  <select id="findMaterialturninstoreList" parameterClass="com.erp.lqpm.materials.dto.TPmMaterialturninstore" resultClass="com.erp.base.CaseInsensitiveMap">
+	select * from (select ROW_NUMBER() OVER(ORDER BY createdate desc) AS rownum,row_.* from (<include refid="getMaterialturninstoreList" />) row_ ) t
+	where t.rownum<![CDATA[ > ]]> #start# and t.rownum <![CDATA[ <= ]]>  #end#
+  </select>
